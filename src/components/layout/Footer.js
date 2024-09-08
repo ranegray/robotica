@@ -1,12 +1,16 @@
-import Link from "next/link";
-
 export default function Footer() {
   return (
-    <footer className="bg-gray-800 p-4 text-center text-white">
-      <div className="container mx-auto">
-        <p>&copy; 2024 - Robotica</p>
+    <footer className="bg-slate-800 p-4 text-white">
+      <div className="mx-auto flex max-w-screen-lg gap-5">
         <p>
-          <Link href="/about">About Us</Link>
+          Built by{" "}
+          <a
+            className="underline hover:text-zinc-300"
+            target="_blank"
+            href="https://ranegray.dev"
+          >
+            ranegray.dev
+          </a>
         </p>
       </div>
     </footer>

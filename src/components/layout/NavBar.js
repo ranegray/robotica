@@ -5,31 +5,38 @@ export default function NavBar() {
   const { data: session, status } = useSession();
 
   return (
-    <nav className="bg-gray-800 p-4 text-white">
-      <ul className="m-auto flex max-w-screen-sm items-center justify-between">
-        <li>
-          <Link href="/">Home</Link>
-        </li>
+    <nav className="bg-slate-800 p-4 text-white">
+      <ul className="m-auto flex max-w-screen-lg items-center justify-between">
         {status == "authenticated" ? (
-          <div className="flex items-center gap-5">
+          <>
             <li>
-              <Link href="/learn">{session.user.email}</Link>
+              <Link href="/learn">Robotica</Link>
             </li>
-            <li>
-              <button onClick={() => signOut({ callbackUrl: "/" })}>
-                Sign out
-              </button>
-            </li>
-          </div>
+            <div className="flex items-center gap-5">
+              <li>
+                <Link href="/learn">{session.user.email}</Link>
+              </li>
+              <li>
+                <button onClick={() => signOut({ callbackUrl: "/" })}>
+                  Sign out
+                </button>
+              </li>
+            </div>
+          </>
         ) : (
-          <div className="flex items-center gap-5">
+          <>
             <li>
-              <Link href="/auth/signin">Log in</Link>
+              <Link href="/">Robotica</Link>
             </li>
-            <li className="border bg-purple-600 p-2">
-              <Link href="/auth/new-user">Sign up</Link>
-            </li>
-          </div>
+            <div className="flex items-center gap-5">
+              <li>
+                <Link href="/auth/signin">Log in</Link>
+              </li>
+              <li className="border bg-purple-600 p-2">
+                <Link href="/auth/new-user">Sign up</Link>
+              </li>
+            </div>
+          </>
         )}
       </ul>
     </nav>

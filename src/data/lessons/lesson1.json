@@ -1,0 +1,12 @@
+{
+    "id": "lesson1",
+    "name": "Introduction to Rover Control",
+    "content": "# This is where your lesson content will go\n\nYou can use Markdown formatting here.",
+    "quizQuestions": [
+      {
+        "question": "What command moves the rover forward?",
+        "options": ["move()", "forward()", "advance()", "step()"],
+        "correctAnswer": 1
+      }
+    ]
+  }

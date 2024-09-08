@@ -4,9 +4,9 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Robotica</title>
+        <title>Learn Robotics | Robotica</title>
       </Head>
-      <div className="">
+      <div className="m-auto flex max-w-screen-lg justify-center">
         <p>Welcome to Robotica!</p>
       </div>
     </>
