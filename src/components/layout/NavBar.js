@@ -9,15 +9,29 @@ export default function NavBar() {
       <ul className="m-auto flex max-w-screen-lg items-center justify-between">
         {status == "authenticated" ? (
           <>
-            <li>
-              <Link href="/learn">Robotica</Link>
-            </li>
-            <div className="flex items-center gap-5">
+            <div className="flex gap-5 uppercase">
               <li>
-                <Link href="/learn">{session.user.email}</Link>
+                <Link href="/learn" className="font-extrabold">
+                  Robotica
+                </Link>
               </li>
               <li>
-                <button onClick={() => signOut({ callbackUrl: "/" })}>
+                <Link href="/learn" className="text-sm font-bold">
+                  Home
+                </Link>
+              </li>
+            </div>
+            <div className="flex items-center gap-5 text-sm font-bold">
+              <li>
+                <Link href="/profile" className="underline">
+                  {session.user.email}
+                </Link>
+              </li>
+              <li>
+                <button
+                  className="uppercase"
+                  onClick={() => signOut({ callbackUrl: "/" })}
+                >
                   Sign out
                 </button>
               </li>
@@ -26,13 +40,15 @@ export default function NavBar() {
         ) : (
           <>
             <li>
-              <Link href="/">Robotica</Link>
+              <Link href="/" className="font-extrabold uppercase">
+                Robotica
+              </Link>
             </li>
-            <div className="flex items-center gap-5">
+            <div className="flex items-center gap-5 text-sm font-bold uppercase">
               <li>
                 <Link href="/auth/signin">Log in</Link>
               </li>
-              <li className="border bg-purple-600 p-2">
+              <li className="border bg-blue-600 p-2">
                 <Link href="/auth/new-user">Sign up</Link>
               </li>
             </div>

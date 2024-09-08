@@ -6,7 +6,7 @@ export default function Home() {
       <Head>
         <title>Learn Robotics | Robotica</title>
       </Head>
-      <div className="m-auto flex max-w-screen-lg justify-center">
+      <div className="m-auto max-w-screen-lg">
         <p>Welcome to Robotica!</p>
       </div>
     </>
