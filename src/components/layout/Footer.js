@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="bg-slate-800 p-4 text-white">
+    <footer className="bg-slate-800 p-4 text-white flex-shrink-0">
       <div className="mx-auto flex max-w-screen-lg gap-5">
         <p>
           Built by{" "}

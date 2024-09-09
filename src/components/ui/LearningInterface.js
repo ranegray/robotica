@@ -37,7 +37,7 @@ const Rover = ({ position, rotation }) => {
   );
 };
 
-const RoverSimulator = () => {
+const LearningInterface = () => {
   const [position, setPosition] = useState([0, 0, 0]);
   const [rotation, setRotation] = useState(0);
 
@@ -65,4 +65,4 @@ const RoverSimulator = () => {
   );
 };
 
-export default RoverSimulator;
+export default LearningInterface;

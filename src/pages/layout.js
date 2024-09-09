@@ -5,7 +5,7 @@ export default function Layout({ children }) {
   return (
     <>
       <NavBar />
-      <main>{children}</main>
+      <main className="flex-grow overflow-hidden">{children}</main>
       <Footer />
     </>
   );
