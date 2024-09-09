@@ -1,22 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Canvas, useFrame, useLoader } from "@react-three/fiber";
-import { OrbitControls, Plane } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
 import { useSpring, animated } from "@react-spring/three";
-import Editor from "@monaco-editor/react";
-import * as THREE from "three";
-
-const MartianSurface = () => {
-  //   const texture = useLoader(THREE.TextureLoader, "/martian_surface.jpeg");
-  //   return (
-  //     <Plane
-  //       args={[30, 30]}
-  //       rotation={[-Math.PI / 2, 0, 0]}
-  //       position={[0, -0.5, 0]}
-  //     >
-  //       <meshStandardMaterial map={texture} />
-  //     </Plane>
-  //   );
-};
+import dynamic from "next/dynamic";
+const Editor = dynamic(import("@monaco-editor/react"), { ssr: false });
 
 const Rover = ({ position, rotation }) => {
   const { pos, rot } = useSpring({
@@ -52,104 +39,65 @@ const Rover = ({ position, rotation }) => {
 };
 
 const RoverSimulator = () => {
-  const [code, setCode] = useState(`# Control the rover using these commands:
-# move_forward()
-# move_backward()
-# turn_left()
-# turn_right()
-
-move_forward()
-move_forward()
-turn_right()
-move_forward()
-`);
+  // const [code, setCode] = useState("");
+  const [isConnected, setIsConnected] = useState(false);
   const [output, setOutput] = useState("");
   const [position, setPosition] = useState([0, 0, 0]);
   const [rotation, setRotation] = useState(0);
-  const commandQueue = useRef([]);
 
-  const runCode = () => {
-    setOutput("");
+  const wsRef = useRef(null);
+  const editorRef = useRef(null);
 
-    // https://emkc.org/api/v2/piston/runtimes
-    // POST /api/v2/piston/execute
-    async function executeCode() {
-      const response = await fetch("https://emkc.org/api/v2/piston/execute", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          language: "python3",
-          version: "3.10.0",
-          files: [
-            {
-              name: "lesson1.js",
-              content: code,
-            },
-          ],
-        }),
-      });
-      const data = await response.json();
-      console.log(data);
+  useEffect(() => {
+    connectWebSocket();
+
+    return () => {
+      if (wsRef.current) wsRef.current.close();
+    };
+  }, []);
+
+  const connectWebSocket = () => {
+    if (
+      wsRef.current &&
+      (wsRef.current.readyState === WebSocket.OPEN ||
+        wsRef.current.readyState === WebSocket.CONNECTING)
+    ) {
+      console.log("WebSocket is already connected or connecting");
+      return;
     }
 
-    executeCode();
+    wsRef.current = new WebSocket("ws://localhost:8765");
 
-    // commandQueue.current = [];
+    wsRef.current.onopen = (event) => {
+      console.log("WebSocket Connected", event);
+      setIsConnected(true);
+    };
 
-    // // Parse the code and add commands to the queue
-    // // TODO - Make this more robust
-    // const lines = code.split("\n");
-    // lines.forEach((line) => {
-    //   if (line[0] == "#") return;
+    wsRef.current.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+      if (data.type === "output") {
+        setOutput(data.data + "\n");
+      }
+    };
 
-    //   if (line.includes("move_forward()")) {
-    //     commandQueue.current.push("forward");
-    //   } else if (line.includes("move_backward()")) {
-    //     commandQueue.current.push("backward");
-    //   } else if (line.includes("turn_left()")) {
-    //     commandQueue.current.push("left");
-    //   } else if (line.includes("turn_right()")) {
-    //     commandQueue.current.push("right");
-    //   }
-    // });
+    wsRef.current.onclose = (event) => {
+      console.log("WebSocket Disconnected", event);
+      setIsConnected(false);
+      setTimeout(connectWebSocket, 5000);
+    };
 
-    // executeNextCommand();
+    wsRef.current.onerror = (error) => {
+      console.error("WebSocket Error:", error);
+    };
   };
 
-  const executeNextCommand = () => {
-    if (commandQueue.current.length === 0) return;
-
-    const command = commandQueue.current.shift();
-    switch (command) {
-      case "forward":
-        setPosition((prev) => [
-          prev[0] + Math.sin(rotation) * 2,
-          prev[1],
-          prev[2] - Math.cos(rotation) * 2,
-        ]);
-        setOutput((prev) => prev + `Moving forward.\n`);
-        break;
-      case "backward":
-        setPosition((prev) => [
-          prev[0] - Math.sin(rotation) * 2,
-          prev[1],
-          prev[2] + Math.cos(rotation) * 2,
-        ]);
-        setOutput((prev) => prev + `Moving backward.\n`);
-        break;
-      case "left":
-        setRotation((prev) => prev + Math.PI / 2);
-        setOutput((prev) => prev + `Turning left.\n`);
-        break;
-      case "right":
-        setRotation((prev) => prev - Math.PI / 2);
-        setOutput((prev) => prev + `Turning right.\n`);
-        break;
+  const runCode = () => {
+    if (!isConnected) {
+      setOutput("Not connected to server. Please wait...\n");
+      return;
     }
-
-    setTimeout(executeNextCommand, 1000);
+    const code = editorRef.current.getValue();
+    wsRef.current.send(JSON.stringify({ type: "runCode", code }));
   };
 
   return (
@@ -168,7 +116,6 @@ move_forward()
             screenSpacePanning={false}
           />
           <gridHelper args={[30, 30]} />
-          <MartianSurface />
           <Rover position={position} rotation={rotation} />
         </Canvas>
       </div>
@@ -177,10 +124,14 @@ move_forward()
         <Editor
           height="300px"
           defaultLanguage="python"
-          value={code}
-          onChange={setCode}
+          onMount={(editor) => {
+            editorRef.current = editor;
+          }}
           theme="vs-dark"
         />
+        <div>
+          {isConnected ? "Connected to server" : "Disconnected from server"}
+        </div>
         <button
           onClick={runCode}
           className="mt-4 w-full rounded bg-green-500 px-4 py-2 text-white"
