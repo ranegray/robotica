@@ -22,7 +22,7 @@ export default function Learn() {
     return <p>Loading...</p>;
   } else if (status === "unauthenticated") {
     return (
-      <div className="flex flex-col items-center justify-center">
+      <div className="m-4 flex flex-col items-center justify-center">
         <Link
           className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
           href="/login"
@@ -43,56 +43,37 @@ export default function Learn() {
             </h1>
           </div>
           <div className="rounded-lg bg-slate-900 p-10">
-            <h2 className="font-extrabold uppercase">mars learning journey</h2>
+            <h2 className="font-extrabold uppercase text-red-500">
+              mars learning journey
+            </h2>
 
             <div className="mx-4 flex justify-between rounded-full bg-cyan-800">
-              {[1, 2, 3, 4, 5].map((mission, index) => (
+              {[0, 1, 2, 3, 4].map((mission, index) => (
                 <div
                   key={mission}
-                  className={`rounded-full px-4 py-4 ${
-                    index === 1
-                      ? "bg-red-600"
-                      : index < 1
-                        ? "bg-green-600"
-                        : "bg-black"
-                  }`}
+                  className={`rounded-full bg-cyan-900 px-4 py-4`}
                 ></div>
               ))}
-            </div>
-            <div className="mt-3 flex justify-between">
-              <p className="text-sm font-bold uppercase text-gray-400">
-                Mission 0
-              </p>
-              <p className="text-sm font-bold uppercase text-gray-400">
-                Mission 1
-              </p>
-              <p className="text-sm font-bold uppercase text-gray-400">
-                Mission 2
-              </p>
-              <p className="text-sm font-bold uppercase text-gray-400">
-                Mission 3
-              </p>
-              <p className="text-sm font-bold uppercase text-gray-400">
-                Mission 4
-              </p>
             </div>
           </div>
           <div className="flex flex-col gap-5">
             <div className="flex gap-5">
-              <div className="w-1/2 rounded-lg bg-slate-900 p-4">
+              <div className="w-1/2 rounded-lg bg-slate-900 p-4 text-teal-400">
                 <h2 className="text-center font-extrabold uppercase text-red-500">
                   current mission
                 </h2>
                 <h3 className="mt-2 text-lg font-bold">
-                  Mission 1: First Steps on Mars
+                  Mission 0: Getting Started
                 </h3>
-                <p className="mt-1 text-sm">
-                  Move the rover in a simple pattern (square or figure-eight)
-                </p>
-                <div className="mt-2 h-4 w-full rounded-full bg-gray-700">
-                  <div className="h-full w-1/3 rounded-full bg-green-500"></div>
+                <div className="flex justify-between">
+                  <p className="text-md mt-1">
+                    Lesson 1: Introduction to Mars Exploration
+                  </p>
+                  <p className="text-md mt-1">Status: Not started</p>
                 </div>
-                <p className="mt-1 text-right text-sm">Progress: 33%</p>
+                <button className="mt-2 w-full rounded bg-red-500 p-2 text-sm font-bold uppercase text-white hover:bg-red-600">
+                  Launch Mission
+                </button>
               </div>
               <div className="w-1/2 rounded-lg bg-slate-900 p-4">
                 <h2 className="text-center font-extrabold uppercase text-red-500">

@@ -15,16 +15,19 @@ export default function SignIn() {
 
   return (
     <div className="m-auto max-w-screen-lg">
-      <form action="" className="flex flex-col w-1/4">
-        <label htmlFor="email">Email</label>
-        <input
-          className="rounded-lg border border-black"
-          id="email"
-          type="email"
-          onChange={handleEmailChange}
-        />
-        <button className="bg-blue-500 text-white px-3 border font-bold uppercase rounded-full" onClick={() => signIn("email", { email })}>Submit</button>
-      </form>
+      <label htmlFor="email">Email</label>
+      <input
+        className="rounded-lg border border-black"
+        id="email"
+        type="email"
+        onChange={handleEmailChange}
+      />
+      <button
+        className="rounded-full border bg-blue-500 px-3 font-bold uppercase text-white"
+        onClick={() => signIn("email", { email })}
+      >
+        Submit
+      </button>
     </div>
   );
 }
