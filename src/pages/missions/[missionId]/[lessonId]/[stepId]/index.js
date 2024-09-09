@@ -3,6 +3,7 @@ import curriculum from "@/data/curriculum.json";
 import LessonPane from "@/components/ui/LessonPane";
 import IDE from "@/components/ui/IDE";
 import RoverCam from "@/components/ui/RoverCam";
+import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 
 export default function Step() {
   const router = useRouter();
@@ -15,10 +16,24 @@ export default function Step() {
   if (!step) return <div>Step not found</div>;
 
   return (
-    <div className="flex h-full">
-      <LessonPane lesson={step} />
-      <IDE />
-      <RoverCam />
-    </div>
+    <PanelGroup direction="horizontal">
+      <Panel className="flex" minSize={1}>
+        <LessonPane lesson={step} />
+      </Panel>
+      <PanelResizeHandle className="w-0.5 bg-slate-600 transition-colors hover:bg-slate-700" />
+      <Panel className="flex" minSize={20}>
+        <IDE
+          mission={mission}
+          lesson={lesson}
+          step={step}
+          router={router}
+          code={step.code}
+        />
+      </Panel>
+      <PanelResizeHandle className="w-0.5 bg-slate-600 transition-colors hover:bg-slate-700" />
+      <Panel className="flex" minSize={20}>
+        <RoverCam />
+      </Panel>
+    </PanelGroup>
   );
 }

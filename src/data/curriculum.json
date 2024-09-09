@@ -1,247 +1,260 @@
 {
-    "missions": [
-      {
-        "id": 0,
-        "title": "Mars Rover Basics",
-        "lessons": [
-          {
-            "id": "interface-introduction",
-            "title": "Interface Introduction",
-            "steps": [
-              {
-                "id": "overview",
-                "title": "Overview of the Interface",
-                "content": "Welcome to the Mars Rover Simulator! Let's start by exploring the main components of our interface."
-              },
-              {
-                "id": "control-panel",
-                "title": "The Control Panel",
-                "content": "The control panel is where you'll find all the buttons and indicators for operating your rover."
-              },
-              {
-                "id": "view-screen",
-                "title": "The View Screen",
-                "content": "The view screen shows you what your rover sees on the Martian surface."
-              }
-            ]
-          },
-          {
-            "id": "rover-orientation",
-            "title": "Rover Orientation",
-            "steps": [
-              {
-                "id": "compass",
-                "title": "Using the Compass",
-                "content": "Your rover is equipped with a compass to help you navigate the Martian terrain."
-              },
-              {
-                "id": "coordinates",
-                "title": "Understanding Coordinates",
-                "content": "Learn how to read and use the coordinate system to pinpoint your rover's location."
-              }
-            ]
-          },
-          {
-            "id": "rover-controls",
-            "title": "Rover Controls",
-            "steps": [
-              {
-                "id": "movement-controls",
-                "title": "Movement Controls",
-                "content": "Learn how to move your rover forward, backward, and turn left or right."
-              },
-              {
-                "id": "camera-controls",
-                "title": "Camera Controls",
-                "content": "Discover how to pan and tilt the rover's camera for better visibility."
-              }
-            ]
-          },
-          {
-            "id": "rover-movements",
-            "title": "Rover Movements",
-            "steps": [
-              {
-                "id": "basic-maneuvers",
-                "title": "Basic Maneuvers",
-                "content": "Practice simple movements like driving in a straight line and making turns."
-              },
-              {
-                "id": "obstacle-avoidance",
-                "title": "Obstacle Avoidance",
-                "content": "Learn how to navigate around rocks and other obstacles on the Martian surface."
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "id": 1,
-        "title": "First Steps on Mars",
-        "lessons": [
-          {
-            "id": "basic-movements",
-            "title": "Basic Movements",
-            "steps": [
-              {
-                "id": "forward-backward",
-                "title": "Moving Forward and Backward",
-                "content": "Practice precise control of your rover's forward and backward movements."
-              },
-              {
-                "id": "turning",
-                "title": "Turning and Rotating",
-                "content": "Learn how to make accurate turns and rotate the rover in place."
-              }
-            ]
-          },
-          {
-            "id": "advanced-movements",
-            "title": "Advanced Movements",
-            "steps": [
-              {
-                "id": "curved-paths",
-                "title": "Navigating Curved Paths",
-                "content": "Master the art of guiding your rover along curved and complex paths."
-              },
-              {
-                "id": "precision-parking",
-                "title": "Precision Parking",
-                "content": "Learn how to park your rover in tight spaces with pinpoint accuracy."
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "id": 2,
-        "title": "Exploring Mars",
-        "lessons": [
-          {
-            "id": "exploring-terrain",
-            "title": "Exploring Terrain",
-            "steps": [
-              {
-                "id": "identify-features",
-                "title": "Identifying Terrain Features",
-                "content": "Learn to recognize different Martian terrain types and geological features."
-              },
-              {
-                "id": "navigate-slopes",
-                "title": "Navigating Slopes",
-                "content": "Master the technique of safely traversing up and down Martian slopes."
-              }
-            ]
-          },
-          {
-            "id": "collecting-samples",
-            "title": "Collecting Samples",
-            "steps": [
-              {
-                "id": "use-arm",
-                "title": "Using the Robotic Arm",
-                "content": "Learn how to operate the rover's robotic arm for sample collection."
-              },
-              {
-                "id": "analyze-samples",
-                "title": "Analyzing Samples",
-                "content": "Understand how to use the rover's onboard instruments to analyze collected samples."
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "id": 3,
-        "title": "Advanced Mars Rover",
-        "lessons": [
-          {
-            "id": "advanced-sensors",
-            "title": "Advanced Sensors",
-            "steps": [
-              {
-                "id": "spectroscopy",
-                "title": "Using Spectroscopy",
-                "content": "Learn how to use the rover's spectrometer to analyze the composition of Martian rocks and soil."
-              },
-              {
-                "id": "weather-station",
-                "title": "Weather Station Operations",
-                "content": "Operate the rover's weather station to collect atmospheric data on Mars."
-              }
-            ]
-          },
-          {
-            "id": "autonomous-driving",
-            "title": "Autonomous Driving",
-            "steps": [
-              {
-                "id": "path-planning",
-                "title": "Path Planning",
-                "content": "Learn how to program the rover to plan its own path across Martian terrain."
-              },
-              {
-                "id": "obstacle-detection",
-                "title": "Autonomous Obstacle Detection",
-                "content": "Set up the rover's systems to autonomously detect and avoid obstacles."
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "id": 4,
-        "title": "Mars Rover Mastery",
-        "lessons": [
-          {
-            "id": "final-challenge",
-            "title": "Final Challenge",
-            "steps": [
-              {
-                "id": "mission-briefing",
-                "title": "Mission Briefing",
-                "content": "Receive your final mission parameters and objectives for the Mars exploration challenge."
-              },
-              {
-                "id": "execute-mission",
-                "title": "Execute the Mission",
-                "content": "Put all your learned skills to the test in a complex, multi-objective Mars exploration mission."
-              },
-              {
-                "id": "mission-debrief",
-                "title": "Mission Debrief",
-                "content": "Analyze your performance and receive feedback on your Mars exploration mission."
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "id": 5,
-        "title": "Mars Rover Certification",
-        "lessons": [
-          {
-            "id": "certification-exam",
-            "title": "Certification Exam",
-            "steps": [
-              {
-                "id": "written-test",
-                "title": "Written Examination",
-                "content": "Complete a comprehensive written test covering all aspects of Mars rover operations and Martian science."
-              },
-              {
-                "id": "practical-exam",
-                "title": "Practical Examination",
-                "content": "Demonstrate your rover operation skills in a series of challenging practical tests."
-              },
-              {
-                "id": "final-evaluation",
-                "title": "Final Evaluation and Certification",
-                "content": "Receive your final evaluation and, if successful, your Mars Rover Operator Certification."
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
+  "missions": [
+    {
+      "id": 0,
+      "title": "Mars Rover Basics",
+      "lessons": [
+        {
+          "id": "interface-introduction",
+          "title": "Interface Introduction",
+          "steps": [
+            {
+              "id": "overview",
+              "title": "Overview of the Interface",
+              "content": "Welcome to the Mars Rover Simulator! Let's start by exploring the main components of our interface.",
+              "code": "print('Hello, Mars!');",
+              "next": "control-panel",
+              "prev": ""
+            },
+            {
+              "id": "control-panel",
+              "title": "The Control Panel",
+              "content": "The control panel is where you'll find all the buttons and indicators for operating your rover.",
+              "code": "rover.moveForward();",
+              "next": "view-screen",
+              "prev": "overview"
+            },
+            {
+              "id": "view-screen",
+              "title": "The View Screen",
+              "content": "The view screen shows you what your rover sees on the Martian surface.",
+              "code": "rover.panCamera(45);",
+              "next": "",
+              "prev": "control-panel"
+            }
+          ]
+        },
+        {
+          "id": "rover-orientation",
+          "title": "Rover Orientation",
+          "steps": [
+            {
+              "id": "compass",
+              "title": "Using the Compass",
+              "content": "Your rover is equipped with a compass to help you navigate the Martian terrain.",
+              "next": "coordinates",
+              "prev": ""
+            },
+            {
+              "id": "coordinates",
+              "title": "Understanding Coordinates",
+              "content": "Learn how to read and use the coordinate system to pinpoint your rover's location.",
+              "next": "",
+              "prev": "compass"
+            }
+          ]
+        },
+        {
+          "id": "rover-controls",
+          "title": "Rover Controls",
+          "steps": [
+            {
+              "id": "movement-controls",
+              "title": "Movement Controls",
+              "content": "Learn how to move your rover forward, backward, and turn left or right."
+            },
+            {
+              "id": "camera-controls",
+              "title": "Camera Controls",
+              "content": "Discover how to pan and tilt the rover's camera for better visibility."
+            }
+          ]
+        },
+        {
+          "id": "rover-movements",
+          "title": "Rover Movements",
+          "steps": [
+            {
+              "id": "basic-maneuvers",
+              "title": "Basic Maneuvers",
+              "content": "Practice simple movements like driving in a straight line and making turns."
+            },
+            {
+              "id": "obstacle-avoidance",
+              "title": "Obstacle Avoidance",
+              "content": "Learn how to navigate around rocks and other obstacles on the Martian surface."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "First Steps on Mars",
+      "lessons": [
+        {
+          "id": "basic-movements",
+          "title": "Basic Movements",
+          "steps": [
+            {
+              "id": "forward-backward",
+              "title": "Moving Forward and Backward",
+              "content": "Practice precise control of your rover's forward and backward movements."
+            },
+            {
+              "id": "turning",
+              "title": "Turning and Rotating",
+              "content": "Learn how to make accurate turns and rotate the rover in place."
+            }
+          ]
+        },
+        {
+          "id": "advanced-movements",
+          "title": "Advanced Movements",
+          "steps": [
+            {
+              "id": "curved-paths",
+              "title": "Navigating Curved Paths",
+              "content": "Master the art of guiding your rover along curved and complex paths."
+            },
+            {
+              "id": "precision-parking",
+              "title": "Precision Parking",
+              "content": "Learn how to park your rover in tight spaces with pinpoint accuracy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Exploring Mars",
+      "lessons": [
+        {
+          "id": "exploring-terrain",
+          "title": "Exploring Terrain",
+          "steps": [
+            {
+              "id": "identify-features",
+              "title": "Identifying Terrain Features",
+              "content": "Learn to recognize different Martian terrain types and geological features."
+            },
+            {
+              "id": "navigate-slopes",
+              "title": "Navigating Slopes",
+              "content": "Master the technique of safely traversing up and down Martian slopes."
+            }
+          ]
+        },
+        {
+          "id": "collecting-samples",
+          "title": "Collecting Samples",
+          "steps": [
+            {
+              "id": "use-arm",
+              "title": "Using the Robotic Arm",
+              "content": "Learn how to operate the rover's robotic arm for sample collection."
+            },
+            {
+              "id": "analyze-samples",
+              "title": "Analyzing Samples",
+              "content": "Understand how to use the rover's onboard instruments to analyze collected samples."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Advanced Mars Rover",
+      "lessons": [
+        {
+          "id": "advanced-sensors",
+          "title": "Advanced Sensors",
+          "steps": [
+            {
+              "id": "spectroscopy",
+              "title": "Using Spectroscopy",
+              "content": "Learn how to use the rover's spectrometer to analyze the composition of Martian rocks and soil."
+            },
+            {
+              "id": "weather-station",
+              "title": "Weather Station Operations",
+              "content": "Operate the rover's weather station to collect atmospheric data on Mars."
+            }
+          ]
+        },
+        {
+          "id": "autonomous-driving",
+          "title": "Autonomous Driving",
+          "steps": [
+            {
+              "id": "path-planning",
+              "title": "Path Planning",
+              "content": "Learn how to program the rover to plan its own path across Martian terrain."
+            },
+            {
+              "id": "obstacle-detection",
+              "title": "Autonomous Obstacle Detection",
+              "content": "Set up the rover's systems to autonomously detect and avoid obstacles."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Mars Rover Mastery",
+      "lessons": [
+        {
+          "id": "final-challenge",
+          "title": "Final Challenge",
+          "steps": [
+            {
+              "id": "mission-briefing",
+              "title": "Mission Briefing",
+              "content": "Receive your final mission parameters and objectives for the Mars exploration challenge."
+            },
+            {
+              "id": "execute-mission",
+              "title": "Execute the Mission",
+              "content": "Put all your learned skills to the test in a complex, multi-objective Mars exploration mission."
+            },
+            {
+              "id": "mission-debrief",
+              "title": "Mission Debrief",
+              "content": "Analyze your performance and receive feedback on your Mars exploration mission."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Mars Rover Certification",
+      "lessons": [
+        {
+          "id": "certification-exam",
+          "title": "Certification Exam",
+          "steps": [
+            {
+              "id": "written-test",
+              "title": "Written Examination",
+              "content": "Complete a comprehensive written test covering all aspects of Mars rover operations and Martian science."
+            },
+            {
+              "id": "practical-exam",
+              "title": "Practical Examination",
+              "content": "Demonstrate your rover operation skills in a series of challenging practical tests."
+            },
+            {
+              "id": "final-evaluation",
+              "title": "Final Evaluation and Certification",
+              "content": "Receive your final evaluation and, if successful, your Mars Rover Operator Certification."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
