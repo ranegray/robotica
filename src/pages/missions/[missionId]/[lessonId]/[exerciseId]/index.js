@@ -5,29 +5,29 @@ import IDE from "@/components/ui/IDE";
 import RoverCam from "@/components/ui/RoverCam";
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 
-export default function Step() {
+export default function Exercise() {
   const router = useRouter();
-  const { missionId, lessonId, stepId } = router.query;
+  const { missionId, lessonId, exerciseId } = router.query;
 
   const mission = curriculum.missions.find((m) => m.id === parseInt(missionId));
   const lesson = mission?.lessons.find((l) => l.id === lessonId);
-  const step = lesson?.steps.find((s) => s.id === stepId);
+  const exercise = lesson?.exercises.find((s) => s.id === exerciseId);
 
-  if (!step) return <div>Step not found</div>;
+  if (!exercise) return <div>exercise not found</div>;
 
   return (
     <PanelGroup direction="horizontal">
       <Panel className="flex" minSize={1}>
-        <LessonPane lesson={step} />
+        <LessonPane lesson={exercise} />
       </Panel>
       <PanelResizeHandle className="w-0.5 bg-slate-600 transition-colors hover:bg-slate-700" />
       <Panel className="flex" minSize={20}>
         <IDE
           mission={mission}
           lesson={lesson}
-          step={step}
+          exercise={exercise}
           router={router}
-          code={step.code}
+          code={exercise.code}
         />
       </Panel>
       <PanelResizeHandle className="w-0.5 bg-slate-600 transition-colors hover:bg-slate-700" />

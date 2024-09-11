@@ -7,7 +7,7 @@ import { EditorControls } from "./EditorControls";
 
 const Editor = dynamic(import("@monaco-editor/react"), { ssr: false });
 
-export default function IDE({ mission, lesson, step, code }) {
+export default function IDE({ mission, lesson, exercise, code }) {
   const [currentCode, setCurrentCode] = useState(code);
   const [editorTheme, setEditorTheme] = useState("vs-dark");
   const editorRef = useRef(null);
@@ -57,7 +57,7 @@ export default function IDE({ mission, lesson, step, code }) {
         runCode={runCode}
         mission={mission}
         lesson={lesson}
-        step={step}
+        exercise={exercise}
       />
       <div className="mt-5 h-full">
         <h3 className="mb-2 text-xl font-bold">Mission Log:</h3>

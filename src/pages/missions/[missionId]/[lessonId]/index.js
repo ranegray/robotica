@@ -4,11 +4,11 @@ import curriculum from "@/data/curriculum.json";
 
 export default function Lesson() {
   const router = useRouter();
-  const { missionId, lessonId, stepId } = router.query;
+  const { missionId, lessonId, exerciseId } = router.query;
 
   const mission = curriculum.missions.find((m) => m.id === parseInt(missionId));
   const lesson = mission?.lessons.find((l) => l.id === lessonId);
-  const step = lesson?.steps.find((s) => s.id === stepId);
+  const exercise = lesson?.exercises.find((s) => s.id === exerciseId);
 
   if (!lesson) return <div>Lesson not found</div>;
 
@@ -16,10 +16,10 @@ export default function Lesson() {
     <div>
       <h1>{mission.title}</h1>
       <h2>{lesson.title}</h2>
-      {lesson.steps.map((step) => (
-        <li key={step.id}>
-          <Link href={`/missions/${missionId}/${lesson.id}/${step.id}`}>
-            {step.title}
+      {lesson.exercises.map((exercise) => (
+        <li key={exercise.id}>
+          <Link href={`/missions/${missionId}/${lesson.id}/${exercise.id}`}>
+            {exercise.title}
           </Link>
         </li>
       ))}

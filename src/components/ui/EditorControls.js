@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export function EditorControls({ runCode, mission, lesson, step }) {
+export function EditorControls({ runCode, mission, lesson, exercise }) {
   return (
     <div className="flex justify-between bg-slate-900 p-3">
       <button
@@ -10,17 +10,17 @@ export function EditorControls({ runCode, mission, lesson, step }) {
         Run Code
       </button>
       <div className="flex items-center gap-2">
-        {step.prev && (
+        {exercise.prev && (
           <Link
-            href={`/missions/${mission.id}/${lesson.id}/${step.prev}`}
+            href={`/missions/${mission.id}/${lesson.id}/${exercise.prev}`}
             className="rounded-md bg-yellow-500 p-1.5 text-black"
           >
             Back
           </Link>
         )}
-        {step.next && (
+        {exercise.next && (
           <Link
-            href={`/missions/${mission.id}/${lesson.id}/${step.next}`}
+            href={`/missions/${mission.id}/${lesson.id}/${exercise.next}`}
             className="rounded-md bg-yellow-500 p-1.5 text-black"
           >
             Next

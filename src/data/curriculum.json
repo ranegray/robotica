@@ -7,7 +7,7 @@
         {
           "id": "interface-introduction",
           "title": "Interface Introduction",
-          "steps": [
+          "exercises": [
             {
               "id": "overview",
               "title": "Overview of the Interface",
@@ -37,7 +37,7 @@
         {
           "id": "rover-orientation",
           "title": "Rover Orientation",
-          "steps": [
+          "exercises": [
             {
               "id": "compass",
               "title": "Using the Compass",
@@ -57,7 +57,7 @@
         {
           "id": "rover-controls",
           "title": "Rover Controls",
-          "steps": [
+          "exercises": [
             {
               "id": "movement-controls",
               "title": "Movement Controls",
@@ -95,7 +95,7 @@
         {
           "id": "basic-movements",
           "title": "Basic Movements",
-          "steps": [
+          "exercises": [
             {
               "id": "forward-backward",
               "title": "Moving Forward and Backward",
@@ -111,7 +111,7 @@
         {
           "id": "advanced-movements",
           "title": "Advanced Movements",
-          "steps": [
+          "exercises": [
             {
               "id": "curved-paths",
               "title": "Navigating Curved Paths",
@@ -133,7 +133,7 @@
         {
           "id": "exploring-terrain",
           "title": "Exploring Terrain",
-          "steps": [
+          "exercises": [
             {
               "id": "identify-features",
               "title": "Identifying Terrain Features",
@@ -149,7 +149,7 @@
         {
           "id": "collecting-samples",
           "title": "Collecting Samples",
-          "steps": [
+          "exercises": [
             {
               "id": "use-arm",
               "title": "Using the Robotic Arm",
@@ -171,7 +171,7 @@
         {
           "id": "advanced-sensors",
           "title": "Advanced Sensors",
-          "steps": [
+          "exercises": [
             {
               "id": "spectroscopy",
               "title": "Using Spectroscopy",
@@ -209,7 +209,7 @@
         {
           "id": "final-challenge",
           "title": "Final Challenge",
-          "steps": [
+          "exercises": [
             {
               "id": "mission-briefing",
               "title": "Mission Briefing",
@@ -236,7 +236,7 @@
         {
           "id": "certification-exam",
           "title": "Certification Exam",
-          "steps": [
+          "exercises": [
             {
               "id": "written-test",
               "title": "Written Examination",
