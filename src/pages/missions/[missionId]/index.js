@@ -7,7 +7,7 @@ export default function Mission() {
   const { missionId } = router.query;
 
   console.log(curriculum);
-  const mission = curriculum.missions.find((m) => m.id === parseInt(missionId));
+  const mission = curriculum.missions.find((m) => m.id === missionId);
 
   if (!mission) return <div>Mission not found</div>;
   console.log(mission);

@@ -1,256 +1,212 @@
 {
   "missions": [
     {
-      "id": 0,
-      "title": "Mars Rover Basics",
+      "id": "mars_rover_basics",
+      "title": "Mars Rover: First Steps on the Red Planet",
+      "missionDescription": "Learn to control a Mars Rover and complete your first exploration mission.",
       "lessons": [
         {
-          "id": "interface-introduction",
-          "title": "Interface Introduction",
+          "id": "lesson_1",
+          "title": "Your First Robot - The Mars Rover",
+          "lessonDescription": "Learn basic programming concepts while controlling a simulated Mars Rover.",
+          "lessonObjective": "Guide the rover to collect soil samples on the Martian surface.",
+          "storyContext": "You're a new programmer at NASA, tasked with programming a Mars Rover prototype.",
+          "conceptsCovered": [
+            "Basic syntax (Python)",
+            "Variables",
+            "Simple functions",
+            "Loops"
+          ],
+          "roboticsConcepts": [
+            "Robot movement (forward, backward, turn)",
+            "Basic sensors (obstacle detection)"
+          ],
+          "estimatedTime": 45,
           "exercises": [
             {
-              "id": "overview",
-              "title": "Overview of the Interface",
-              "content": "Welcome to the Mars Rover Simulator! Let's start by exploring the main components of our interface.",
-              "code": "print('Hello, Mars!');",
-              "next": "control-panel",
-              "prev": ""
+              "id": "ex_1_1",
+              "title": "Basic Syntax and Print Statements",
+              "exerciseDescription": "Write a program that prints 'Hello from Mars!' to the console.",
+              "concept": "Introduction to Python syntax and print function",
+              "difficulty": "Beginner",
+              "stepByStep": [
+                "Open the Python editor",
+                "Type the code below: `print('Hello from Mars!')`",
+                "Run the program to see the output"
+              ],
+              "codeTemplate": "# Write your print statement here\n",
+              "expectedOutput": "Hello from Mars!",
+              "hints": [
+                "Remember to use parentheses after print",
+                "String literals should be enclosed in quotes"
+              ],
+              "nextExerciseId": "ex_1_2",
+              "previousExerciseId": null
             },
             {
-              "id": "control-panel",
-              "title": "The Control Panel",
-              "content": "The control panel is where you'll find all the buttons and indicators for operating your rover.",
-              "code": "rover.moveForward();",
-              "next": "view-screen",
-              "prev": "overview"
+              "id": "ex_1_2",
+              "title": "Variables and Simple Math",
+              "exerciseDescription": "Calculate the distance traveled by the rover given its speed and time.",
+              "concept": "Variables, basic arithmetic operations",
+              "difficulty": "Beginner",
+              "stepByStep": [
+                "Create a variable for speed (e.g., 2 meters per second)",
+                "Create a variable for time (e.g., 10 seconds)",
+                "Multiply speed by time to get distance",
+                "Print the result"
+              ],
+              "codeTemplate": "speed = 2  # meters per second\ntime = 10  # seconds\n\n# Calculate distance here\n\n# Print the result\n",
+              "expectedOutput": "The rover traveled 20 meters.",
+              "hints": [
+                "Use the multiplication operator (*) to calculate distance",
+                "Remember to convert the result to a string when printing"
+              ],
+              "nextExerciseId": "ex_1_3",
+              "previousExerciseId": "ex_1_1"
             },
             {
-              "id": "view-screen",
-              "title": "The View Screen",
-              "content": "The view screen shows you what your rover sees on the Martian surface.",
-              "code": "rover.panCamera(45);",
-              "next": "",
-              "prev": "control-panel"
-            }
-          ]
-        },
-        {
-          "id": "rover-orientation",
-          "title": "Rover Orientation",
-          "exercises": [
-            {
-              "id": "compass",
-              "title": "Using the Compass",
-              "content": "Your rover is equipped with a compass to help you navigate the Martian terrain.",
-              "next": "coordinates",
-              "prev": ""
+              "id": "ex_1_3",
+              "title": "Functions: Move Forward",
+              "exerciseDescription": "Create a function move_forward() that prints 'Moving forward' to the console.",
+              "concept": "Function definition and calling",
+              "difficulty": "Beginner",
+              "stepByStep": [
+                "Define a function named move_forward",
+                "Inside the function, print 'Moving forward'",
+                "Call the function to test it"
+              ],
+              "codeTemplate": "# Define your move_forward function here\n\n# Call your function here\n",
+              "expectedOutput": "Moving forward",
+              "hints": [
+                "Use 'def' to define a function",
+                "Don't forget the colon (:) at the end of the function definition",
+                "Indent the function body"
+              ],
+              "nextExerciseId": "ex_1_4",
+              "previousExerciseId": "ex_1_2"
             },
             {
-              "id": "coordinates",
-              "title": "Understanding Coordinates",
-              "content": "Learn how to read and use the coordinate system to pinpoint your rover's location.",
-              "next": "",
-              "prev": "compass"
-            }
-          ]
-        },
-        {
-          "id": "rover-controls",
-          "title": "Rover Controls",
-          "exercises": [
-            {
-              "id": "movement-controls",
-              "title": "Movement Controls",
-              "content": "Learn how to move your rover forward, backward, and turn left or right."
+              "id": "ex_1_4",
+              "title": "Functions with Parameters",
+              "exerciseDescription": "Modify move_forward(steps) to accept a parameter and print the number of steps moved.",
+              "concept": "Function parameters",
+              "difficulty": "Beginner",
+              "stepByStep": [
+                "Modify the move_forward function to accept a 'steps' parameter",
+                "Update the print statement to include the number of steps",
+                "Call the function with different step values"
+              ],
+              "codeTemplate": "def move_forward(steps):\n    # Update this function to print the number of steps\n    pass\n\n# Test your function here\n",
+              "expectedOutput": "Moving forward 3 steps\nMoving forward 5 steps",
+              "hints": [
+                "Use string formatting to include the steps in your print statement",
+                "Call the function multiple times with different arguments"
+              ],
+              "nextExerciseId": "ex_1_5",
+              "previousExerciseId": "ex_1_3"
             },
             {
-              "id": "camera-controls",
-              "title": "Camera Controls",
-              "content": "Discover how to pan and tilt the rover's camera for better visibility."
-            }
-          ]
-        },
-        {
-          "id": "rover-movements",
-          "title": "Rover Movements",
-          "steps": [
-            {
-              "id": "basic-maneuvers",
-              "title": "Basic Maneuvers",
-              "content": "Practice simple movements like driving in a straight line and making turns."
+              "id": "ex_1_5",
+              "title": "Turning the Rover",
+              "exerciseDescription": "Create a turn(direction) function that prints the direction turned.",
+              "concept": "Functions with string parameters",
+              "difficulty": "Beginner",
+              "stepByStep": [
+                "Define a function named turn that accepts a 'direction' parameter",
+                "Print a message indicating the turn direction",
+                "Call the function with different directions"
+              ],
+              "codeTemplate": "# Define your turn function here\n\n# Test your function with different directions\n",
+              "expectedOutput": "Turning left\nTurning right",
+              "hints": [
+                "The direction parameter can be a string like 'left' or 'right'",
+                "Use string formatting to include the direction in your print statement"
+              ],
+              "nextExerciseId": "ex_1_6",
+              "previousExerciseId": "ex_1_4"
             },
             {
-              "id": "obstacle-avoidance",
-              "title": "Obstacle Avoidance",
-              "content": "Learn how to navigate around rocks and other obstacles on the Martian surface."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 1,
-      "title": "First Steps on Mars",
-      "lessons": [
-        {
-          "id": "basic-movements",
-          "title": "Basic Movements",
-          "exercises": [
-            {
-              "id": "forward-backward",
-              "title": "Moving Forward and Backward",
-              "content": "Practice precise control of your rover's forward and backward movements."
+              "id": "ex_1_6",
+              "title": "Simple Loops",
+              "exerciseDescription": "Use a for loop to call move_forward() multiple times.",
+              "concept": "For loops, range function",
+              "difficulty": "Beginner",
+              "stepByStep": [
+                "Define the move_forward function",
+                "Create a for loop that repeats 3 times",
+                "Call move_forward() within the loop"
+              ],
+              "codeTemplate": "def move_forward():\n    print('Moving forward')\n\n# Create a loop to call move_forward 3 times\n",
+              "expectedOutput": "Moving forward\nMoving forward\nMoving forward",
+              "hints": [
+                "Use 'for i in range(3):' to create a loop that repeats 3 times",
+                "Don't forget to indent the function call inside the loop"
+              ],
+              "nextExerciseId": "ex_1_7",
+              "previousExerciseId": "ex_1_5"
             },
             {
-              "id": "turning",
-              "title": "Turning and Rotating",
-              "content": "Learn how to make accurate turns and rotate the rover in place."
-            }
-          ]
-        },
-        {
-          "id": "advanced-movements",
-          "title": "Advanced Movements",
-          "exercises": [
-            {
-              "id": "curved-paths",
-              "title": "Navigating Curved Paths",
-              "content": "Master the art of guiding your rover along curved and complex paths."
+              "id": "ex_1_7",
+              "title": "Combining Movement Commands",
+              "exerciseDescription": "Write a sequence of commands to move the rover in a square pattern.",
+              "concept": "Combining functions and loops",
+              "difficulty": "Intermediate",
+              "stepByStep": [
+                "Define move_forward() and turn() functions",
+                "Create a for loop that repeats 4 times (for each side of the square)",
+                "Within the loop, call move_forward() and then turn('right')"
+              ],
+              "codeTemplate": "def move_forward():\n    print('Moving forward')\n\ndef turn(direction):\n    print(f'Turning {direction}')\n\n# Create a loop to move in a square pattern\n",
+              "expectedOutput": "Moving forward\nTurning right\nMoving forward\nTurning right\nMoving forward\nTurning right\nMoving forward\nTurning right",
+              "hints": [
+                "Use a for loop with range(4) to create a square pattern",
+                "Call move_forward() and turn('right') in each iteration of the loop"
+              ],
+              "nextExerciseId": "ex_1_8",
+              "previousExerciseId": "ex_1_6"
             },
             {
-              "id": "precision-parking",
-              "title": "Precision Parking",
-              "content": "Learn how to park your rover in tight spaces with pinpoint accuracy."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "title": "Exploring Mars",
-      "lessons": [
-        {
-          "id": "exploring-terrain",
-          "title": "Exploring Terrain",
-          "exercises": [
-            {
-              "id": "identify-features",
-              "title": "Identifying Terrain Features",
-              "content": "Learn to recognize different Martian terrain types and geological features."
+              "id": "ex_1_8",
+              "title": "Collecting Samples",
+              "exerciseDescription": "Add a collect_sample() function and use it in a sequence of movements.",
+              "concept": "Integrating multiple functions",
+              "difficulty": "Intermediate",
+              "stepByStep": [
+                "Define a collect_sample() function that prints a message",
+                "Create a sequence of movements using existing functions",
+                "Add collect_sample() calls at appropriate points"
+              ],
+              "codeTemplate": "def move_forward():\n    print('Moving forward')\n\ndef turn(direction):\n    print(f'Turning {direction}')\n\n# Define the collect_sample function here\n\n# Create a sequence of movements and sample collections\n",
+              "expectedOutput": "Moving forward\nCollecting sample\nTurning right\nMoving forward\nCollecting sample",
+              "hints": [
+                "The collect_sample() function should print 'Collecting sample'",
+                "Combine move_forward(), turn(), and collect_sample() calls in a sequence"
+              ],
+              "nextExerciseId": "ex_1_9",
+              "previousExerciseId": "ex_1_7"
             },
             {
-              "id": "navigate-slopes",
-              "title": "Navigating Slopes",
-              "content": "Master the technique of safely traversing up and down Martian slopes."
-            }
-          ]
-        },
-        {
-          "id": "collecting-samples",
-          "title": "Collecting Samples",
-          "exercises": [
-            {
-              "id": "use-arm",
-              "title": "Using the Robotic Arm",
-              "content": "Learn how to operate the rover's robotic arm for sample collection."
-            },
-            {
-              "id": "analyze-samples",
-              "title": "Analyzing Samples",
-              "content": "Understand how to use the rover's onboard instruments to analyze collected samples."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 3,
-      "title": "Advanced Mars Rover",
-      "lessons": [
-        {
-          "id": "advanced-sensors",
-          "title": "Advanced Sensors",
-          "exercises": [
-            {
-              "id": "spectroscopy",
-              "title": "Using Spectroscopy",
-              "content": "Learn how to use the rover's spectrometer to analyze the composition of Martian rocks and soil."
-            },
-            {
-              "id": "weather-station",
-              "title": "Weather Station Operations",
-              "content": "Operate the rover's weather station to collect atmospheric data on Mars."
-            }
-          ]
-        },
-        {
-          "id": "autonomous-driving",
-          "title": "Autonomous Driving",
-          "steps": [
-            {
-              "id": "path-planning",
-              "title": "Path Planning",
-              "content": "Learn how to program the rover to plan its own path across Martian terrain."
-            },
-            {
-              "id": "obstacle-detection",
-              "title": "Autonomous Obstacle Detection",
-              "content": "Set up the rover's systems to autonomously detect and avoid obstacles."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 4,
-      "title": "Mars Rover Mastery",
-      "lessons": [
-        {
-          "id": "final-challenge",
-          "title": "Final Challenge",
-          "exercises": [
-            {
-              "id": "mission-briefing",
-              "title": "Mission Briefing",
-              "content": "Receive your final mission parameters and objectives for the Mars exploration challenge."
-            },
-            {
-              "id": "execute-mission",
-              "title": "Execute the Mission",
-              "content": "Put all your learned skills to the test in a complex, multi-objective Mars exploration mission."
-            },
-            {
-              "id": "mission-debrief",
-              "title": "Mission Debrief",
-              "content": "Analyze your performance and receive feedback on your Mars exploration mission."
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 5,
-      "title": "Mars Rover Certification",
-      "lessons": [
-        {
-          "id": "certification-exam",
-          "title": "Certification Exam",
-          "exercises": [
-            {
-              "id": "written-test",
-              "title": "Written Examination",
-              "content": "Complete a comprehensive written test covering all aspects of Mars rover operations and Martian science."
-            },
-            {
-              "id": "practical-exam",
-              "title": "Practical Examination",
-              "content": "Demonstrate your rover operation skills in a series of challenging practical tests."
-            },
-            {
-              "id": "final-evaluation",
-              "title": "Final Evaluation and Certification",
-              "content": "Receive your final evaluation and, if successful, your Mars Rover Operator Certification."
+              "id": "ex_1_9",
+              "title": "Mini-Mission",
+              "exerciseDescription": "Guide the rover to collect 3 samples while avoiding predefined obstacle coordinates.",
+              "concept": "Applying all learned concepts in a cohesive task",
+              "difficulty": "Advanced",
+              "stepByStep": [
+                "Define all necessary functions (move_forward, turn, collect_sample)",
+                "Create a list of obstacle coordinates",
+                "Implement a function to check if a move is safe",
+                "Create a main function that guides the rover, avoiding obstacles and collecting samples",
+                "Keep track of the number of samples collected"
+              ],
+              "codeTemplate": "def move_forward():\n    print('Moving forward')\n\ndef turn(direction):\n    print(f'Turning {direction}')\n\ndef collect_sample():\n    print('Collecting sample')\n\nobstacles = [(1, 1), (2, 3), (4, 2)]\n\n# Implement a function to check if a move is safe\n\n# Create the main mission function here\n",
+              "expectedOutput": "Moving forward\nTurning right\nMoving forward\nCollecting sample\n...\nMission complete! Collected 3 samples.",
+              "hints": [
+                "Use a while loop to continue the mission until 3 samples are collected",
+                "Check for obstacles before each move",
+                "Keep track of the rover's position and update it after each move"
+              ],
+              "nextExerciseId": null,
+              "previousExerciseId": "ex_1_8"
             }
           ]
         }

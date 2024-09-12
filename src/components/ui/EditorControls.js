@@ -1,6 +1,8 @@
 import Link from "next/link";
+import { useState } from "react";
 
 export function EditorControls({ runCode, mission, lesson, exercise }) {
+  const [stepIndex, setStepIndex] = useState(1);
   return (
     <div className="flex justify-between bg-slate-900 p-3">
       <button
@@ -9,18 +11,21 @@ export function EditorControls({ runCode, mission, lesson, exercise }) {
       >
         Run Code
       </button>
+      <p>{stepIndex} / {lesson.exercises.length}</p>
       <div className="flex items-center gap-2">
-        {exercise.prev && (
+        {exercise.previousExerciseId && (
           <Link
-            href={`/missions/${mission.id}/${lesson.id}/${exercise.prev}`}
+            onClick={() => setStepIndex(stepIndex - 1)}
+            href={`/missions/${mission.id}/${lesson.id}/${exercise.previousExerciseId}`}
             className="rounded-md bg-yellow-500 p-1.5 text-black"
           >
             Back
           </Link>
         )}
-        {exercise.next && (
+        {exercise.nextExerciseId && (
           <Link
-            href={`/missions/${mission.id}/${lesson.id}/${exercise.next}`}
+            onClick={() => setStepIndex(stepIndex + 1)}
+            href={`/missions/${mission.id}/${lesson.id}/${exercise.nextExerciseId}`}
             className="rounded-md bg-yellow-500 p-1.5 text-black"
           >
             Next
