@@ -9,7 +9,7 @@ export default function Exercise() {
   const router = useRouter();
   const { missionId, lessonId, exerciseId } = router.query;
 
-  const mission = curriculum.missions.find((m) => m.id === parseInt(missionId));
+  const mission = curriculum.missions.find((m) => m.id === missionId);
   const lesson = mission?.lessons.find((l) => l.id === lessonId);
   const exercise = lesson?.exercises.find((s) => s.id === exerciseId);
 
@@ -18,7 +18,7 @@ export default function Exercise() {
   return (
     <PanelGroup direction="horizontal">
       <Panel className="flex" minSize={1}>
-        <LessonPane lesson={exercise} />
+        <LessonPane exercise={exercise} />
       </Panel>
       <PanelResizeHandle className="w-0.5 bg-slate-600 transition-colors hover:bg-slate-700" />
       <Panel className="flex" minSize={20}>

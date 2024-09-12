@@ -1,9 +1,0 @@
-{
-    "id": "mission1",
-    "name": "First Steps on Mars",
-    "description": "Learn to control the rover's basic movements",
-    "lessonIds": ["lesson1", "lesson2"],
-    "challengeIds": ["challenge1"],
-    "xpReward": 100,
-    "order": 1
-  }

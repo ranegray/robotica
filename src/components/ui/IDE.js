@@ -8,7 +8,7 @@ import { EditorControls } from "./EditorControls";
 const Editor = dynamic(import("@monaco-editor/react"), { ssr: false });
 
 export default function IDE({ mission, lesson, exercise, code }) {
-  const [currentCode, setCurrentCode] = useState(code);
+  // const [currentCode, setCurrentCode] = useState(code);
   const [editorTheme, setEditorTheme] = useState("vs-dark");
   const editorRef = useRef(null);
   const { isConnected, output, sendCode } = useWebSocket();
@@ -18,16 +18,16 @@ export default function IDE({ mission, lesson, exercise, code }) {
     setEditorTheme("myCustomTheme");
   };
 
-  const updateEditorContent = (newCode) => {
-    if (editorRef.current) {
-      editorRef.current.setValue(newCode);
-    }
-    setCurrentCode(newCode);
-  };
+  // const updateEditorContent = (newCode) => {
+  //   if (editorRef.current) {
+  //     editorRef.current.setValue(newCode);
+  //   }
+  //   setCurrentCode(newCode);
+  // };
 
-  useEffect(() => {
-    updateEditorContent(code);
-  }, [code]);
+  // useEffect(() => {
+  //   updateEditorContent(code);
+  // }, [code]);
 
   const runCode = () => {
     const code = editorRef.current.getValue();
@@ -45,7 +45,7 @@ export default function IDE({ mission, lesson, exercise, code }) {
       <Editor
         height={"50%"}
         defaultLanguage="python"
-        value={currentCode}
+        value={exercise.codeTemplate}
         onMount={(editor) => {
           editorRef.current = editor;
         }}
