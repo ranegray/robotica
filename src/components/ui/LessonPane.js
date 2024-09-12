@@ -1,6 +1,6 @@
 export default function LessonPane({ exercise }) {
   return (
-    <div className="w-full bg-white text-black">
+    <div className="w-full bg-white text-black overflow-auto">
       <div className="bg-slate-800 font-bold uppercase text-slate-500">
         Exercise
       </div>

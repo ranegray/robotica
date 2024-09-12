@@ -4,6 +4,8 @@
       "id": "mars_rover_basics",
       "title": "Mars Rover: First Steps on the Red Planet",
       "missionDescription": "Learn to control a Mars Rover and complete your first exploration mission.",
+      "nextMissionId": "mars_rover_terrain_analysis",
+      "previousMissionId": null,
       "lessons": [
         {
           "id": "lesson_1",
@@ -207,6 +209,230 @@
               ],
               "nextExerciseId": null,
               "previousExerciseId": "ex_1_8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mars_rover_terrain_analysis",
+      "title": "Mars Rover: Decoding the Red Planet",
+      "missionDescription": "Learn to analyze Martian terrain using rover sensors and make decisions based on the data.",
+      "nextMissionId": null,
+      "lessons": [
+        {
+          "id": "lesson_2",
+          "title": "Analyzing Martian Terrain - Rover Sensors",
+          "lessonDescription": "Learn about conditional statements and expand on basic programming concepts while interpreting sensor data and guiding the rover's actions.",
+          "lessonObjective": "Program the rover to make decisions based on sensor data and collect samples from suitable locations.",
+          "storyContext": "NASA has upgraded the Mars Rover with advanced sensors to analyze the Martian terrain as it moves. Your task is to program the rover to make decisions based on sensor data.",
+          "conceptsCovered": [
+            "Conditional statements (if/else)",
+            "Boolean logic",
+            "Functions with parameters and return values",
+            "Basic data structures (lists)"
+          ],
+          "roboticsConcepts": [
+            "Sensor data interpretation",
+            "Decision-making based on sensor input"
+          ],
+          "estimatedTime": 60,
+          "exercises": [
+            {
+              "id": "ex_2_1",
+              "title": "Simulating Sensor Data",
+              "exerciseDescription": "Create variables for moisture and rock density with random values.",
+              "concept": "Random number generation, variables",
+              "difficulty": "Beginner",
+              "stepByStep": [
+                "Import the random module",
+                "Create a variable for moisture with a random value between 0 and 100",
+                "Create a variable for rock density with a random value between 0 and 10",
+                "Print both values"
+              ],
+              "codeTemplate": "import random\n\n# Generate random moisture and rock density values here\n\n# Print the values\n",
+              "expectedOutput": "Moisture: 65\nRock Density: 3",
+              "hints": [
+                "Use random.randint(a, b) to generate random integers",
+                "The range for moisture could be 0-100, and for rock density 0-10"
+              ],
+              "nextExerciseId": "ex_2_2",
+              "previousExerciseId": null
+            },
+            {
+              "id": "ex_2_2",
+              "title": "Basic Conditional Statements",
+              "exerciseDescription": "Write an if statement to check if moisture is above a certain threshold.",
+              "concept": "If/else statements, comparison operators",
+              "difficulty": "Beginner",
+              "stepByStep": [
+                "Set a moisture threshold (e.g., 50)",
+                "Write an if statement to check if the moisture is above the threshold",
+                "Print appropriate messages for both cases"
+              ],
+              "codeTemplate": "moisture = 65  # You can change this value to test\nthreshold = 50\n\n# Write your if statement here\n",
+              "expectedOutput": "The soil is sufficiently moist for sampling.",
+              "hints": [
+                "Use the '>' operator to compare moisture to the threshold",
+                "Don't forget the colon ':' at the end of the if statement",
+                "Use 'else' to handle the case when moisture is not above the threshold"
+              ],
+              "nextExerciseId": "ex_2_3",
+              "previousExerciseId": "ex_2_1"
+            },
+            {
+              "id": "ex_2_3",
+              "title": "Complex Conditions",
+              "exerciseDescription": "Use AND/OR operators to check multiple conditions for ideal sample collection.",
+              "concept": "Boolean logic, compound conditions",
+              "difficulty": "Intermediate",
+              "stepByStep": [
+                "Set thresholds for moisture and rock density",
+                "Write a compound condition using AND/OR operators",
+                "Print a message indicating whether the location is ideal for sampling"
+              ],
+              "codeTemplate": "moisture = 65\nrock_density = 3\nmoisture_threshold = 50\nrock_density_threshold = 5\n\n# Write your compound condition here\n",
+              "expectedOutput": "This location is ideal for sample collection.",
+              "hints": [
+                "Use 'and' to combine conditions that both need to be true",
+                "Use 'or' if either condition being true is sufficient",
+                "The ideal condition might be: moisture > threshold AND rock_density < threshold"
+              ],
+              "nextExerciseId": "ex_2_4",
+              "previousExerciseId": "ex_2_2"
+            },
+            {
+              "id": "ex_2_4",
+              "title": "Functions with Return Values",
+              "exerciseDescription": "Create an analyze_terrain() function that returns moisture and rock density.",
+              "concept": "Return statements, multiple return values",
+              "difficulty": "Intermediate",
+              "stepByStep": [
+                "Define a function named analyze_terrain()",
+                "Inside the function, generate random values for moisture and rock density",
+                "Return both values from the function",
+                "Call the function and print the results"
+              ],
+              "codeTemplate": "import random\n\ndef analyze_terrain():\n    # Generate and return moisture and rock density here\n    pass\n\n# Call the function and print the results\n",
+              "expectedOutput": "Terrain Analysis:\nMoisture: 72\nRock Density: 4",
+              "hints": [
+                "Use 'return moisture, rock_density' to return multiple values",
+                "When calling the function, you can unpack the returned values: 'moisture, rock_density = analyze_terrain()'"
+              ],
+              "nextExerciseId": "ex_2_5",
+              "previousExerciseId": "ex_2_3"
+            },
+            {
+              "id": "ex_2_5",
+              "title": "Interpreting Sensor Data",
+              "exerciseDescription": "Write a function to categorize terrain based on sensor data.",
+              "concept": "Functions with multiple parameters, decision-making logic",
+              "difficulty": "Intermediate",
+              "stepByStep": [
+                "Define a function named categorize_terrain(moisture, rock_density)",
+                "Implement logic to categorize the terrain (e.g., 'Ideal', 'Possible', 'Unsuitable')",
+                "Return the category",
+                "Test the function with different moisture and rock density values"
+              ],
+              "codeTemplate": "def categorize_terrain(moisture, rock_density):\n    # Implement categorization logic here\n    pass\n\n# Test the function with different values\n",
+              "expectedOutput": "Terrain Category: Ideal\nTerrain Category: Unsuitable",
+              "hints": [
+                "Use if/elif/else statements to implement the categorization logic",
+                "Consider multiple factors: high moisture and low rock density might be 'Ideal'",
+                "Test the function with various combinations of moisture and rock density"
+              ],
+              "nextExerciseId": "ex_2_6",
+              "previousExerciseId": "ex_2_4"
+            },
+            {
+              "id": "ex_2_6",
+              "title": "Basic Lists",
+              "exerciseDescription": "Create a list of coordinates for the rover to visit.",
+              "concept": "List creation and access",
+              "difficulty": "Beginner",
+              "stepByStep": [
+                "Create a list of tuples representing coordinates",
+                "Print the entire list",
+                "Access and print individual coordinates"
+              ],
+              "codeTemplate": "# Create a list of coordinates here\n\n# Print the entire list\n\n# Print the second coordinate\n",
+              "expectedOutput": "All coordinates: [(0, 0), (2, 3), (5, 1), (4, 4)]\nSecond coordinate: (2, 3)",
+              "hints": [
+                "Use square brackets [] to create a list",
+                "Each coordinate can be a tuple, e.g., (0, 0)",
+                "Access list elements using index, remember indexing starts at 0"
+              ],
+              "nextExerciseId": "ex_2_7",
+              "previousExerciseId": "ex_2_5"
+            },
+            {
+              "id": "ex_2_7",
+              "title": "Looping Through Lists",
+              "exerciseDescription": "Use a for loop to visit each coordinate in the list.",
+              "concept": "Iterating through lists",
+              "difficulty": "Intermediate",
+              "stepByStep": [
+                "Create a list of coordinates",
+                "Write a for loop to iterate through the list",
+                "For each coordinate, print a message about visiting that location",
+                "Use the analyze_terrain and categorize_terrain functions for each coordinate"
+              ],
+              "codeTemplate": "coordinates = [(0, 0), (2, 3), (5, 1), (4, 4)]\n\ndef analyze_terrain():\n    # Your analyze_terrain function here\n\ndef categorize_terrain(moisture, rock_density):\n    # Your categorize_terrain function here\n\n# Write your for loop here\n",
+              "expectedOutput": "Visiting coordinate (0, 0)\nTerrain Category: Possible\nVisiting coordinate (2, 3)\nTerrain Category: Ideal\n...",
+              "hints": [
+                "Use 'for coordinate in coordinates:' to loop through the list",
+                "Unpack the coordinate tuple in the for loop: 'for x, y in coordinates:'",
+                "Call analyze_terrain() and categorize_terrain() for each coordinate"
+              ],
+              "nextExerciseId": "ex_2_8",
+              "previousExerciseId": "ex_2_6"
+            },
+            {
+              "id": "ex_2_8",
+              "title": "Conditional Actions",
+              "exerciseDescription": "Collect a sample only if the terrain is suitable based on sensor data.",
+              "concept": "Combining loops, conditionals, and function calls",
+              "difficulty": "Advanced",
+              "stepByStep": [
+                "Use the previous functions: analyze_terrain() and categorize_terrain()",
+                "Loop through the list of coordinates",
+                "For each coordinate, analyze the terrain and categorize it",
+                "If the terrain is 'Ideal', simulate collecting a sample",
+                "Otherwise, print a message about skipping the location"
+              ],
+              "codeTemplate": "coordinates = [(0, 0), (2, 3), (5, 1), (4, 4)]\n\ndef analyze_terrain():\n    # Your analyze_terrain function here\n\ndef categorize_terrain(moisture, rock_density):\n    # Your categorize_terrain function here\n\ndef collect_sample():\n    print(\"Collecting sample\")\n\n# Write your main loop here\n",
+              "expectedOutput": "Analyzing coordinate (0, 0)\nTerrain unsuitable, moving to next location\nAnalyzing coordinate (2, 3)\nTerrain ideal, collecting sample\nCollecting sample\n...",
+              "hints": [
+                "Use a for loop to iterate through coordinates",
+                "Call analyze_terrain() for each coordinate",
+                "Use an if statement to check if the terrain category is 'Ideal'",
+                "Call collect_sample() only if the terrain is ideal"
+              ],
+              "nextExerciseId": "ex_2_9",
+              "previousExerciseId": "ex_2_7"
+            },
+            {
+              "id": "ex_2_9",
+              "title": "Tracking Mission Progress",
+              "exerciseDescription": "Keep count of collected samples and print a mission summary.",
+              "concept": "Variables as counters, string formatting",
+              "difficulty": "Advanced",
+              "stepByStep": [
+                "Initialize a counter for collected samples",
+                "Modify the main loop to increment the counter when a sample is collected",
+                "After the loop, print a summary of the mission",
+                "Include the total coordinates visited and samples collected in the summary"
+              ],
+              "codeTemplate": "coordinates = [(0, 0), (2, 3), (5, 1), (4, 4), (3, 3), (1, 1)]\n\ndef analyze_terrain():\n    # Your analyze_terrain function here\n\ndef categorize_terrain(moisture, rock_density):\n    # Your categorize_terrain function here\n\ndef collect_sample():\n    print(\"Collecting sample\")\n\n# Initialize sample counter\n\n# Write your main loop here\n\n# Print mission summary\n",
+              "expectedOutput": "Mission Summary:\nTotal locations visited: 6\nSamples collected: 3",
+              "hints": [
+                "Initialize samples_collected = 0 before the loop",
+                "Increment samples_collected when collect_sample() is called",
+                "Use f-strings for easy string formatting in the summary",
+                "The summary should print after the loop is complete"
+              ],
+              "nextExerciseId": null,
+              "previousExerciseId": "ex_2_8"
             }
           ]
         }

@@ -22,7 +22,7 @@ export function EditorControls({ runCode, mission, lesson, exercise }) {
             Back
           </Link>
         )}
-        {exercise.nextExerciseId && (
+        {exercise.nextExerciseId ? (
           <Link
             onClick={() => setStepIndex(stepIndex + 1)}
             href={`/missions/${mission.id}/${lesson.id}/${exercise.nextExerciseId}`}
@@ -30,7 +30,15 @@ export function EditorControls({ runCode, mission, lesson, exercise }) {
           >
             Next
           </Link>
+        ) : (
+          <Link
+            href={`/missions/${mission.nextMissionId ? mission.nextMissionId : mission.id}`}
+            className="rounded-md bg-yellow-500 p-1.5 text-black"
+          >
+            Finish
+          </Link>
         )}
+        
       </div>
     </div>
   );
