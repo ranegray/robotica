@@ -34,7 +34,7 @@ export default function Learn() {
   }
 
   return (
-    <div className="h-full">
+    <div className="h-full overflow-auto">
       <div className="m-auto flex max-w-screen-lg flex-col gap-5">
         <div>
           <h1 className="text-3xl font-extrabold uppercase text-red-500">
