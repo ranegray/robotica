@@ -60,11 +60,11 @@ export function useWebSocket() {
   };
 
   const sendCode = (code) => {
-    if (!isConnected) {
-      setOutput("Not connected to server. Please wait...\n");
-      return;
+    if (wsRef.current.readyState === WebSocket.OPEN) {
+      wsRef.current.send(JSON.stringify({ type: "runCode", code }));
+    } else {
+      setOutput("Not connected to server. Please wait...");
     }
-    wsRef.current.send(JSON.stringify({ type: "runCode", code }));
   };
 
   return { isConnected, output, sendCode };

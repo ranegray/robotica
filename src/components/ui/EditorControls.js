@@ -1,17 +1,30 @@
 import Link from "next/link";
 import { useState } from "react";
 
-export function EditorControls({ runCode, mission, lesson, exercise }) {
-  const [stepIndex, setStepIndex] = useState(lesson.exercises.findIndex((e) => e.id === exercise.id) + 1);
+export function EditorControls({
+  runCode,
+  mission,
+  lesson,
+  exercise,
+  completed,
+  setCompleted,
+  isRunning,
+}) {
+  const [stepIndex, setStepIndex] = useState(
+    lesson.exercises.findIndex((e) => e.id === exercise.id) + 1,
+  );
   return (
     <div className="flex justify-between bg-slate-900 p-3">
       <button
         onClick={runCode}
-        className="rounded-md bg-yellow-500 p-1.5 text-black"
+        disabled={isRunning}
+        className="rounded-md bg-yellow-500 p-1.5 text-black disabled:pointer-events-none disabled:opacity-50"
       >
-        Run Code
+        {!isRunning ? "Run Code" : "Running..."}
       </button>
-      <p>{stepIndex} / {lesson.exercises.length}</p>
+      <p>
+        {stepIndex} / {lesson.exercises.length}
+      </p>
       <div className="flex items-center gap-2">
         {exercise.previousExerciseId && (
           <Link
@@ -24,9 +37,16 @@ export function EditorControls({ runCode, mission, lesson, exercise }) {
         )}
         {exercise.nextExerciseId ? (
           <Link
-            onClick={() => setStepIndex(stepIndex + 1)}
+            onClick={(e) => {
+              if (!completed) {
+                e.preventDefault();
+              } else {
+                setStepIndex(stepIndex + 1);
+                setCompleted(false);
+              }
+            }}
             href={`/missions/${mission.id}/${lesson.id}/${exercise.nextExerciseId}`}
-            className="rounded-md bg-yellow-500 p-1.5 text-black"
+            className={`rounded-md bg-yellow-500 p-1.5 text-black ${!completed && "pointer-events-none opacity-50"}`}
           >
             Next
           </Link>
@@ -38,7 +58,6 @@ export function EditorControls({ runCode, mission, lesson, exercise }) {
             Finish
           </Link>
         )}
-        
       </div>
     </div>
   );
