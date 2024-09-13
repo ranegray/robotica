@@ -4,6 +4,9 @@ export function useWebSocket() {
   const [isConnected, setIsConnected] = useState(false);
   const [output, setOutput] = useState("");
   const wsRef = useRef(null);
+  const reconnectAttemptsRef = useRef(0);
+  const maxReconnectAttempts = 5; // Maximum number of reconnection attempts
+  const reconnectDelay = 5000; // Delay between reconnection attempts in milliseconds
 
   useEffect(() => {
     connectWebSocket();
@@ -23,12 +26,18 @@ export function useWebSocket() {
       return;
     }
 
+    if (reconnectAttemptsRef.current >= maxReconnectAttempts) {
+      console.log("Max reconnection attempts reached. Stopping reconnection.");
+      return;
+    }
+
     // TODO - Replace with your own WebSocket server URL
     wsRef.current = new WebSocket("ws://localhost:8765");
 
     wsRef.current.onopen = (event) => {
       console.log("WebSocket Connected", event);
       setIsConnected(true);
+      reconnectAttemptsRef.current = 0; // Reset reconnection attempts on successful connection
     };
 
     wsRef.current.onmessage = (event) => {
@@ -41,7 +50,8 @@ export function useWebSocket() {
     wsRef.current.onclose = (event) => {
       console.log("WebSocket Disconnected", event);
       setIsConnected(false);
-      setTimeout(connectWebSocket, 5000);
+      reconnectAttemptsRef.current += 1;
+      setTimeout(connectWebSocket, reconnectDelay);
     };
 
     wsRef.current.onerror = (error) => {
