@@ -19,12 +19,6 @@ export async function updateUserProgress(
   lessonId,
   exerciseId,
 ) {
-  console.log("Updating progress for:", {
-    userId,
-    missionId,
-    lessonId,
-    exerciseId,
-  });
   const { data, error } = await supabase.from("user_progress").upsert(
     {
       user_id: userId,
