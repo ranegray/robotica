@@ -1,22 +1,15 @@
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import curriculum from "../data/curriculum.json";
 import OperatorStats from "@/components/ui/OperatorStats";
+import useCurriculum from "../hooks/useCurriculum";
+import { useGetProgress } from "@/hooks/useProgress";
+import useUser from "@/hooks/useUser";
 
 export default function Learn() {
-  const [user, setUser] = useState(null);
   const { data: session, status } = useSession();
-
-  async function fetchData() {
-    const response = await fetch("/api/user-profile");
-    const data = await response.json();
-    setUser(data);
-  }
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const { user } = useUser();
+  const { curriculum } = useCurriculum();
+  const { progress } = useGetProgress();
 
   if (status === "loading") {
     return <p>Loading...</p>;
@@ -41,93 +34,105 @@ export default function Learn() {
             Operator Dashboard
           </h1>
         </div>
-        <div className="rounded-lg bg-slate-900 p-10">
-          <h2 className="font-extrabold uppercase text-red-500">
-            mars learning journey
-          </h2>
-
-          <div className="mx-4 flex justify-between rounded-full bg-cyan-800">
-            {[0, 1, 2, 3, 4].map((mission, index) => (
-              <div
-                key={mission}
-                className={`rounded-full bg-cyan-900 px-4 py-4`}
-              ></div>
-            ))}
-          </div>
-          <div>
-            <h1>Mars Rover Simulator Curriculum</h1>
-            <ul>
-              {curriculum.missions.map((mission) => (
-                <li key={mission.id}>
-                  <Link
-                    href={`/missions/${mission.id}`}
-                    className="text-blue-500 underline hover:text-blue-400"
-                  >
-                    {mission.title}
-                  </Link>
-                </li>
+        {curriculum && curriculum.missions && (
+          <div className="rounded-lg bg-slate-900 p-10">
+            <h2 className="font-extrabold uppercase text-red-500">
+              Mars Learning Journey
+            </h2>
+            <div className="mx-4 flex justify-between rounded-full bg-cyan-800">
+              {curriculum.missions.map((_, index) => (
+                <div
+                  key={index}
+                  className="rounded-full bg-cyan-900 px-4 py-4"
+                ></div>
               ))}
-            </ul>
+            </div>
+            <div>
+              <h3>Mars Rover Simulator Curriculum</h3>
+              <ul>
+                {curriculum.missions.map((mission) => (
+                  <li key={mission.id}>
+                    <Link
+                      href={`/missions/${mission.id}`}
+                      className="text-blue-500 underline hover:text-blue-400"
+                    >
+                      {mission.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
-        </div>
-        <div className="flex flex-col gap-5">
-          <div className="flex gap-5">
+        )}
+        <div className="flex gap-5">
+          {progress && curriculum && (
             <div className="w-1/2 rounded-lg bg-slate-900 p-4 text-teal-400">
               <h2 className="text-center font-extrabold uppercase text-red-500">
-                current mission
+                Current Mission
               </h2>
               <h3 className="mt-2 text-lg font-bold">
-                Mission 0: Getting Started
+                {curriculum.missions.find((m) => m.id == progress.mission_id)
+                  .title || "No mission in progress"}
               </h3>
               <div className="flex justify-between">
-                <p className="text-md mt-1">
-                  Lesson 1: Introduction to Mars Exploration
+                <p className="mt-1">
+                  {curriculum.missions[0].lessons[0].exercises.find(
+                    (e) => e.id == progress.exercise_id,
+                  ).title || "Get started!"}
                 </p>
-                <p className="text-md mt-1">Status: Not started</p>
+                <p className="mt-1">
+                  Status:{" "}
+                  {progress?.exercise_id ? "In progress" : "Not started"}
+                </p>
               </div>
-              <button className="mt-2 w-full rounded bg-red-500 p-2 text-sm font-bold uppercase text-white hover:bg-red-600">
-                Launch Mission
-              </button>
+              <Link
+                href={`/missions/${progress.mission_id}/${progress.lesson_id}/${progress.exercise_id}`}
+                className="mt-2 block w-full rounded bg-red-500 p-2 text-center text-sm font-bold uppercase text-white hover:bg-red-600"
+              >
+                {progress.mission_id ? "Continue Mission" : "Get Started"}
+              </Link>
             </div>
+          )}
+          {user && (
             <div className="w-1/2 rounded-lg bg-slate-900 p-4">
               <h2 className="text-center font-extrabold uppercase text-red-500">
                 Operator Stats
               </h2>
               <OperatorStats user={user} />
             </div>
+          )}
+        </div>
+        <div className="flex gap-5">
+          <div className="w-1/2 rounded-lg bg-slate-900 p-4">
+            <h2 className="text-center font-extrabold uppercase text-red-500">
+              available missions
+            </h2>
+            {[
+              "MAIN: Escape Mars",
+              "SIDE: Analyze Martian soil samples",
+              "SIDE: Program Rover to collect valuable resources",
+            ].map((mission, index) => (
+              <button
+                key={index}
+                className="mt-2 w-full rounded bg-cyan-800 p-2 text-left hover:bg-cyan-700"
+              >
+                {mission}
+              </button>
+            ))}
           </div>
-          <div className="flex gap-5">
-            <div className="w-1/2 rounded-lg bg-slate-900 p-4">
-              <h2 className="text-center font-extrabold uppercase text-red-500">
-                available missions
-              </h2>
-              {[
-                "MAIN: Escape Mars",
-                "SIDE: Analyze Martian soil samples",
-                "SIDE: Program Rover to collect valuable resources",
-              ].map((mission, index) => (
-                <button
+          <div className="w-1/2 rounded-lg bg-slate-900 p-4">
+            <h2 className="text-center font-extrabold uppercase text-red-500">
+              badges earned
+            </h2>
+            <div className="mt-4 flex justify-center space-x-4">
+              {["🚀", "🔬", "🤖", "🔋"].map((badge, index) => (
+                <div
                   key={index}
-                  className="mt-2 w-full rounded bg-cyan-800 p-2 text-left hover:bg-cyan-700"
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-700 text-2xl"
                 >
-                  {mission}
-                </button>
+                  {badge}
+                </div>
               ))}
-            </div>
-            <div className="w-1/2 rounded-lg bg-slate-900 p-4">
-              <h2 className="text-center font-extrabold uppercase text-red-500">
-                badges earned
-              </h2>
-              <div className="mt-4 flex justify-center space-x-4">
-                {["🚀", "🔬", "🤖", "🔋"].map((badge, index) => (
-                  <div
-                    key={index}
-                    className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-700 text-2xl"
-                  >
-                    {badge}
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
         </div>
