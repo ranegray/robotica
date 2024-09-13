@@ -64,7 +64,7 @@ export default function Learn() {
             </div>
           </div>
         )}
-        <div className="flex flex-col gap-5">
+        <div className="flex gap-5">
           {progress && curriculum && (
             <div className="w-1/2 rounded-lg bg-slate-900 p-4 text-teal-400">
               <h2 className="text-center font-extrabold uppercase text-red-500">
@@ -78,17 +78,18 @@ export default function Learn() {
                 <p className="mt-1">
                   {curriculum.missions[0].lessons[0].exercises.find(
                     (e) => e.id == progress.exercise_id,
-                  ).title || "Start a new mission"}
+                  ).title || "Get started!"}
                 </p>
                 <p className="mt-1">
-                  Status: {progress.status || "Not started"}
+                  Status:{" "}
+                  {progress?.exercise_id ? "In progress" : "Not started"}
                 </p>
               </div>
               <Link
                 href={`/missions/${progress.mission_id}/${progress.lesson_id}/${progress.exercise_id}`}
                 className="mt-2 block w-full rounded bg-red-500 p-2 text-center text-sm font-bold uppercase text-white hover:bg-red-600"
               >
-                {progress.mission_id ? "Continue Mission" : "Start New Mission"}
+                {progress.mission_id ? "Continue Mission" : "Get Started"}
               </Link>
             </div>
           )}
@@ -101,38 +102,37 @@ export default function Learn() {
             </div>
           )}
         </div>
-        {/* <div className="flex gap-5">
-            <div className="w-1/2 rounded-lg bg-slate-900 p-4">
-              <h2 className="text-center font-extrabold uppercase text-red-500">
-                available missions
-              </h2>
-              {[
-                "MAIN: Escape Mars",
-                "SIDE: Analyze Martian soil samples",
-                "SIDE: Program Rover to collect valuable resources",
-              ].map((mission, index) => (
-                <button
+        <div className="flex gap-5">
+          <div className="w-1/2 rounded-lg bg-slate-900 p-4">
+            <h2 className="text-center font-extrabold uppercase text-red-500">
+              available missions
+            </h2>
+            {[
+              "MAIN: Escape Mars",
+              "SIDE: Analyze Martian soil samples",
+              "SIDE: Program Rover to collect valuable resources",
+            ].map((mission, index) => (
+              <button
+                key={index}
+                className="mt-2 w-full rounded bg-cyan-800 p-2 text-left hover:bg-cyan-700"
+              >
+                {mission}
+              </button>
+            ))}
+          </div>
+          <div className="w-1/2 rounded-lg bg-slate-900 p-4">
+            <h2 className="text-center font-extrabold uppercase text-red-500">
+              badges earned
+            </h2>
+            <div className="mt-4 flex justify-center space-x-4">
+              {["🚀", "🔬", "🤖", "🔋"].map((badge, index) => (
+                <div
                   key={index}
-                  className="mt-2 w-full rounded bg-cyan-800 p-2 text-left hover:bg-cyan-700"
+                  className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-700 text-2xl"
                 >
-                  {mission}
-                </button>
+                  {badge}
+                </div>
               ))}
-            </div>
-            <div className="w-1/2 rounded-lg bg-slate-900 p-4">
-              <h2 className="text-center font-extrabold uppercase text-red-500">
-                badges earned
-              </h2>
-              <div className="mt-4 flex justify-center space-x-4">
-                {["🚀", "🔬", "🤖", "🔋"].map((badge, index) => (
-                  <div
-                    key={index}
-                    className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-700 text-2xl"
-                  >
-                    {badge}
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
         </div>
@@ -166,7 +166,6 @@ export default function Learn() {
             ))}
           </div>
         </div>
-      </div> */}
       </div>
     </div>
   );
