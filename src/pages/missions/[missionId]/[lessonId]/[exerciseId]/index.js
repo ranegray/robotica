@@ -14,7 +14,7 @@ export default function Exercise() {
   const mission = curriculum?.missions.find((m) => m.id === missionId);
   const lesson = mission?.lessons.find((l) => l.id === lessonId);
   const exercise = lesson?.exercises.find((s) => s.id === exerciseId);
-  
+
   useEffect(() => {
     if (missionId && lessonId && exerciseId) {
       async function updateProgress() {
@@ -30,18 +30,15 @@ export default function Exercise() {
               exerciseId,
             }),
           });
-  
+
           if (!response.ok) {
             throw new Error("Failed to update progress");
           }
-  
-          const data = await response.json();
-          console.log("Progress updated successfully:", data);
         } catch (error) {
           console.error("Error updating progress:", error);
         }
       }
-  
+
       updateProgress();
     }
   }, [missionId, lessonId, exerciseId]);
