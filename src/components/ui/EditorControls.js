@@ -2,7 +2,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 export function EditorControls({ runCode, mission, lesson, exercise }) {
-  const [stepIndex, setStepIndex] = useState(1);
+  const [stepIndex, setStepIndex] = useState(lesson.exercises.findIndex((e) => e.id === exercise.id) + 1);
   return (
     <div className="flex justify-between bg-slate-900 p-3">
       <button
