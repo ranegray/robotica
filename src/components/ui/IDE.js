@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import dynamic from "next/dynamic";
+import { normalizeOutput } from "@/utils/normalizeOutput";
 import { useWebSocket } from "../../lib/useWebSocket";
 import { customEditorTheme } from "../../lib/editorTheme";
 import { editorOptions } from "../../lib/editorOptions";
@@ -7,10 +8,12 @@ import { EditorControls } from "./EditorControls";
 
 const Editor = dynamic(import("@monaco-editor/react"), { ssr: false });
 
-export default function IDE({ mission, lesson, exercise, code }) {
-  // const [currentCode, setCurrentCode] = useState(code);
+export default function IDE({ mission, lesson, exercise }) {
   const [editorTheme, setEditorTheme] = useState("vs-dark");
+  const [isRunning, setIsRunning] = useState(false);
+  const [completed, setCompleted] = useState(false);
   const editorRef = useRef(null);
+
   const { isConnected, output, sendCode } = useWebSocket();
 
   const handleEditorWillMount = (monaco) => {
@@ -18,18 +21,24 @@ export default function IDE({ mission, lesson, exercise, code }) {
     setEditorTheme("myCustomTheme");
   };
 
-  // const updateEditorContent = (newCode) => {
-  //   if (editorRef.current) {
-  //     editorRef.current.setValue(newCode);
-  //   }
-  //   setCurrentCode(newCode);
-  // };
+  useEffect(() => {
+    if (output && isRunning) {
+      const normalizedServerOutput = normalizeOutput(output);
+      const normalizedExpectedOutput = normalizeOutput(exercise.expectedOutput);
 
-  // useEffect(() => {
-  //   updateEditorContent(code);
-  // }, [code]);
+      if (normalizedServerOutput === normalizedExpectedOutput) {
+        console.log("Mission Complete!");
+        setCompleted(true);
+      } else {
+        console.log("Outputs do not match. Check your code.");
+      }
+      setIsRunning(false);
+    }
+  }, [output, isRunning, exercise.expectedOutput]);
 
   const runCode = () => {
+    setIsRunning(true);
+    setCompleted(false);
     const code = editorRef.current.getValue();
     sendCode(code);
   };
@@ -55,6 +64,10 @@ export default function IDE({ mission, lesson, exercise, code }) {
       />
       <EditorControls
         runCode={runCode}
+        completed={completed}
+        setCompleted={setCompleted}
+        isRunning={isRunning}
+        setIsRunning={setIsRunning}
         mission={mission}
         lesson={lesson}
         exercise={exercise}

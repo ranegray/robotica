@@ -58,7 +58,7 @@
                 "Print the result"
               ],
               "codeTemplate": "speed = 2  # meters per second\ntime = 10  # seconds\n\n# Calculate distance here\n\n# Print the result\n",
-              "expectedOutput": "The rover traveled 20 meters.",
+              "expectedOutput": "20",
               "hints": [
                 "Use the multiplication operator (*) to calculate distance",
                 "Remember to convert the result to a string when printing"

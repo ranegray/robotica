@@ -71,14 +71,19 @@ export default function Learn() {
                 Current Mission
               </h2>
               <h3 className="mt-2 text-lg font-bold">
-                {curriculum.missions.find((m) => m.id == progress.mission_id)
-                  .title || "No mission in progress"}
+                {progress.mission_id
+                  ? curriculum.missions.find(
+                      (m) => m.id == progress?.mission_id,
+                    ).title
+                  : "No mission in progress"}
               </h3>
               <div className="flex justify-between">
                 <p className="mt-1">
-                  {curriculum.missions[0].lessons[0].exercises.find(
-                    (e) => e.id == progress.exercise_id,
-                  ).title || "Get started!"}
+                  {progress.exercise_id
+                    ? curriculum.missions[0].lessons[0].exercises.find(
+                        (e) => e.id == progress.exercise_id,
+                      ).title
+                    : "Get started!"}
                 </p>
                 <p className="mt-1">
                   Status:{" "}
@@ -86,7 +91,7 @@ export default function Learn() {
                 </p>
               </div>
               <Link
-                href={`/missions/${progress.mission_id}/${progress.lesson_id}/${progress.exercise_id}`}
+                href={`${progress.mission_id ? `/missions/${progress.mission_id}/${progress.lesson_id}/${progress.exercise_id}` : `/missions/${curriculum.missions[0].id}/${curriculum.missions[0].lessons[0].id}/${curriculum.missions[0].lessons[0].exercises[0].id}`}`}
                 className="mt-2 block w-full rounded bg-red-500 p-2 text-center text-sm font-bold uppercase text-white hover:bg-red-600"
               >
                 {progress.mission_id ? "Continue Mission" : "Get Started"}
