@@ -1,11 +1,17 @@
 // utils/user.js
 import { supabase } from "../lib/supabase";
 
-export async function initializeUserData(userId) {
+export async function initializeUserData(user) {
   try {
     await supabase
       .from("user_profiles")
-      .upsert({ id: userId, level: 1, xp: 0 });
+      .upsert({
+        id: user.id,
+        username: user.email.split("@")[0],
+        level: 1,
+        xp: 0,
+        last_login: new Date(),
+      });
 
     console.log("User data initialized successfully");
   } catch (error) {

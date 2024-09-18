@@ -5,7 +5,6 @@ import { initializeUserData } from "@/utils/user";
 import { supabase } from "@/lib/supabase";
 
 export const authOptions = {
-  // Configure one or more authentication providers
   providers: [
     EmailProvider({
       server: {
@@ -22,7 +21,7 @@ export const authOptions = {
   ],
   adapter: SupabaseAdapter({
     url: process.env.NEXT_PUBLIC_SUPABASE_URL,
-    secret: process.env.SUPABASE_SERVICE_ROLE_KEY,
+    secret: process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY,
   }),
   callbacks: {
     async signIn({ user }) {
@@ -37,7 +36,7 @@ export const authOptions = {
 
         if (error || !data) {
           // User not initialized, so initialize now
-          await initializeUserData(user.id);
+          await initializeUserData(user);
         }
       }
       return true;
@@ -52,7 +51,7 @@ export const authOptions = {
   pages: {
     signIn: "/auth/signin",
     signOut: "/", // Redirect to home page after sign out
-    newUser: "/auth/new-user", 
+    newUser: "/auth/new-user",
   },
 };
 
